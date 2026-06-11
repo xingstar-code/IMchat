@@ -1,0 +1,29 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.yaml
+application-local.properties
+
+# Runtime data
+logs/
+data/
+uploads/
+tmp/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.xing.infinitechat.ContactService.mapper.FriendMapper">
+
+    <select id="findFriendsByUserId" resultType="dev.xing.infinitechat.ContactService.model.dto.FriendDTO">
+        SELECT
+            f.friend_id AS userUuid,
+            u.user_name AS nickname,
+            u.avatar,
+            s.id AS sessionId
+        FROM
+            friend f
+                JOIN user u ON f.friend_id = u.user_id
+                JOIN user_session us1 ON us1.user_id = #{userId}
+                JOIN user_session us2 ON us2.user_id = f.friend_id AND us1.session_id = us2.session_id
+                JOIN session s ON s.id = us1.session_id
+        WHERE
+            f.user_id = #{userId}
+          AND f.status IN (1, 2)
+          AND s.type = 1
+          AND s.status = 1
+          AND (u.user_name LIKE CONCAT('%', #{key}, '%')
+            OR u.user_id LIKE CONCAT('%', #{key}, '%')
+            OR u.phone LIKE CONCAT('%', #{key}, '%'))
+    </select>
+
+
+
+</mapper>

@@ -1,6 +1,6 @@
 ﻿# Infinite Chat Secondary Development Scaffold
 
-这是一个用于即时通信系统。项目采用 Spring Boot、netty、websocket、mysqlk、fakfa
+这是一个用于即时通信系统。项目采用 Spring Boot、netty、websocket、mysqlk、kafka
 多模块结构，包含认证、联系人、消息、动态、离线存储、网关和实时通信等服务。
 
 
